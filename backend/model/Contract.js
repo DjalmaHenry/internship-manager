@@ -1,9 +1,10 @@
 const Student = require("./Student")
+const Company = require("./Company")
 module.exports = class Contract {
-    constructor(id, company, ocupation, status) {
+    constructor(id, ocupation, status) {
         this.id = id
         Student = Student
-        this.company = company
+        Company = Company
         this.ocupation = ocupation
         this.status = status
     }
@@ -23,7 +24,7 @@ module.exports = class Contract {
     set Student(Student){
         this.Student = Student
     }
-    /*
+    
     get Company(){
         return this.Company
     }
@@ -31,7 +32,7 @@ module.exports = class Contract {
     set Company(Company){
         this.Company = Company
     }
-    */
+    
     get ocupation(){
         return this.ocupation
     }
