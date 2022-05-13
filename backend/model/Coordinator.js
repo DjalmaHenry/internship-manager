@@ -1,9 +1,10 @@
+const Contact = require("./Contact");
 module.exports = class Coordinator {
-  constructor(name, ID, password, contact, studentsList) {
+  constructor(name, ID, password, studentsList) {
     this.name = name;
     this.id = ID;
     this.password = password;
-    this.contact = contact;
+    this.Contact = Contact;
     this.studentsList = studentsList;
   }
 
@@ -28,11 +29,11 @@ module.exports = class Coordinator {
     this.password = password;
   }
 
-  get contact() {
+  get Contact() {
     return this.contact;
   }
-  set contact(contact) {
-    this.contact = contact;
+  set Contact(contact) {
+    this.Contact = contact;
   }
 
   get studentsList() {

@@ -1,18 +1,12 @@
 const Student = require("./Student");
+const Company = require("./Company");
+const Ocupation = require("./Ocupation");
 module.exports = class Report {
-  constructor(
-    id,
-    Student,
-    company,
-    ocupation,
-    status,
-    internshipAvaliation,
-    internshipCheckList
-  ) {
+  constructor(id, status, internshipAvaliation, internshipCheckList) {
     this.id = id;
-    Student = Student;
-    this.company = company;
-    this.ocupation = ocupation;
+    this.Student = Student;
+    this.Company = Company;
+    this.Ocupation = Ocupation;
     this.status = status;
     this.internshipAvaliation = internshipAvaliation;
     this.internshipCheckList = internshipCheckList;
@@ -28,22 +22,22 @@ module.exports = class Report {
   get Student() {
     return this.Student;
   }
-  set Student(Student) {
-    this.Student = Student;
+  set Student(student) {
+    this.Student = student;
   }
 
-  get company() {
-    return this.company;
+  get Company() {
+    return this.Company;
   }
-  set company(company) {
-    this.company = company;
+  set Company(company) {
+    this.Company = company;
   }
 
-  get ocupation() {
-    return this.ocupation;
+  get Ocupation() {
+    return this.Ocupation;
   }
-  set ocupation(ocupation) {
-    this.ocupation = ocupation;
+  set Ocupation(ocupation) {
+    this.Ocupation = ocupation;
   }
 
   get status() {
