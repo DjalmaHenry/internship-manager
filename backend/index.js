@@ -1,6 +1,10 @@
-const express =require('express')
+const express = require('express')
 const app = express()
 const conn = require('./database/database')
+const Student = require('./model/Student')
+const Contract = require('./model/Contract')
+const Contact = require('./model/Contact')
+const Ocupation = require('./model/Ocupation')
 
 
 conn.authenticate().then(() => {
@@ -10,10 +14,10 @@ conn.authenticate().then(() => {
 })
 
 
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.send("API rodando")
 })
 
-app.listen(8080, () =>{
+app.listen(8080, () => {
     console.log("Server running on localhost:8080")
 })
