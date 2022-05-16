@@ -17,6 +17,14 @@ const Student = conn.define('students', {
     status: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    contractId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    contactId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
 });
 

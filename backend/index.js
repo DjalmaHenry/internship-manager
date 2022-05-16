@@ -5,6 +5,9 @@ const Student = require('./model/Student')
 const Contract = require('./model/Contract')
 const Contact = require('./model/Contact')
 const Ocupation = require('./model/Ocupation')
+const Coordinator = require('./model/Coordinator')
+const Report = require('./model/Report')
+const Company = require('./model/Company')
 
 
 conn.authenticate().then(() => {

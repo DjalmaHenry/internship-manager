@@ -1,6 +1,47 @@
 const Student = require("./Student");
 const Company = require("./Company");
 const Ocupation = require("./Ocupation");
+const Sequelize = require('sequelize')
+const conn = require('../database/database')
+
+const Report = conn.define('student_reports', {
+    studentId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    companyId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    ocupationId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    status: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    internship_avaliation: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    internship_checklist: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+    }
+})
+
+Report.sync({ force: false }).then(() => {
+    console.log("report table retrieved")
+})
+module.exports = Report
+
+
+
+
+
+
+/*
 module.exports = class Report {
   constructor(id, status, internshipAvaliation, internshipCheckList) {
     this.id = id;
@@ -61,3 +102,4 @@ module.exports = class Report {
     this.internshipCheckList = internshipCheckList;
   }
 };
+*/
