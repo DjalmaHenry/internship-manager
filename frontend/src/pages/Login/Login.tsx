@@ -4,7 +4,7 @@ import Logo from "../../assets/img/Logo.svg";
 import { FiAtSign } from "react-icons/fi";
 import { AiFillLock, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -19,12 +19,17 @@ import {
   SignInSection,
   TitleSection,
 } from "./styles";
+
 import { validateLoginAndPassword } from "../../assets/schemas";
 import { User } from "../../assets/types";
-import { AdminUser } from "../../assets/data";
+import { AdminUser, generateToken } from "../../assets/utils";
 
-export const LoginPage = () => {
+import { useNavigate } from "react-router-dom";
+
+export const Login = () => {
   const [visible, setVisible] = useState(true);
+
+  const navigate = useNavigate();
 
   const [error, setError] = useState(false);
   const {
@@ -45,10 +50,16 @@ export const LoginPage = () => {
       return setError(true);
     }
     setError(false);
-    localStorage.setItem("email", data.email);
-    localStorage.setItem("password", data.password);
-    console.log(data);
+    const token = generateToken();
+    localStorage.setItem("accessToken", token);
+    navigate("/dashboard");
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("accessToken") !== null) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   return (
     <Container>
