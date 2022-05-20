@@ -71,6 +71,7 @@ export const HeaderTable = styled.div`
     left: 7.5rem;
     font-size: 25px;
     color: #4c4c4c;
+    z-index: 0;
   }
 
   button {
@@ -78,6 +79,7 @@ export const HeaderTable = styled.div`
     font-weight: 600;
     font-size: 16px;
     background-color: #1a7ae0;
+    color: white;
     -webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
     box-shadow: 0 8px 6px -6px black;
@@ -118,11 +120,23 @@ export const Table = styled.table`
 
     td {
       color: #808080;
-      border-bottom: 1px solid #F2F2F2;
+      border-bottom: 1px solid #f2f2f2;
       padding: 1rem;
       font-weight: 600;
       font-size: 15px;
       line-height: 16px;
+
+      svg {
+        cursor: pointer;
+        color: #1a7ae0;
+        margin: 10px;
+        font-size: 25px;
+        transition: all 0.25s;
+      }
+      svg:hover {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
     }
   }
 `;
