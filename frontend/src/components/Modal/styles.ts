@@ -11,9 +11,10 @@ export const BackgroundModal = styled.div`
   z-index: 2;
 `;
 
-export const ContainerModal = styled.div`
+export const ContainerModal = styled.form`
   width: 50%;
-  height: 60%;
+  min-height: 60%;
+  max-height: auto;
   border-radius: 12px;
   background-color: white;
   z-index: 1;
@@ -45,10 +46,38 @@ export const HeaderModal = styled.div`
   }
 
   h1 {
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
     line-height: 29px;
   }
+`;
+
+export const InputsContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const TextareaContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+export const ButtonSubmit = styled.button`
+  background: #1a7ae0;
+  border-radius: 5px;
+  width: 180px;
+  height: 40px;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
 `;
