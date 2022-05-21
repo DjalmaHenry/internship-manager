@@ -5,10 +5,6 @@ const Ocupation = conn.define("ocupation", {
     description: {
         type: Sequelize.STRING,
         allowNull: false
-    },
-    companyId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
     }
 })
 
