@@ -9,7 +9,7 @@ import {
 import { BiSearchAlt } from "react-icons/bi";
 import { mockInterns } from "../../assets/utils";
 import { useState } from "react";
-import Modal from "../Modal/Modal";
+import Modal from "../Modals/RegisterIntern/RegisterIntern";
 import { MdModeEditOutline } from "react-icons/md";
 import { TiDocumentText } from "react-icons/ti";
 
