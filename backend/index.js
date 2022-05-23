@@ -2,13 +2,7 @@ const express = require('express')
 const app = express()
 const conn = require('./database/database')
 const bodyParser = require('body-parser')
-const Student = require('./model/Student')
 const Contract = require('./model/Contract')
-const Contact = require('./model/Contact')
-const Ocupation = require('./model/Ocupation')
-const Coordinator = require('./model/Coordinator')
-const Report = require('./model/Report')
-const Company = require('./model/Company')
 
 
 conn.authenticate().then(() => {
@@ -21,92 +15,122 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-        res.send("API rodando")
-    })
-    //criar coordenador
+    res.send("API rodando")
+})
+
+//criar coordenador
+/*
 app.post("/save-coordinator", (req, res) => {
         var name = req.body.name
         var password = req.body.password
-        var contactId = req.body.contactId
+        var email = req.body.email
+        var phone = req.body.phone
         Coordinator.create({
             name: name,
             password: password,
-            contactId: contactId
+            email: email,
+            phone: phone
+        }).then(() => {
+            res.send("coordinator saved")
         })
     })
-    //listar alunos
-app.get("/all-interns", (req, res) => {
-        Student.findAll({
-            raw: true
-        }).then(interns => {
-            res.send(interns)
-        });
-    })
-    //listar aluno por id
-app.get("/intern/:id", (req, res) => {
-        var id = req.params.id
-        Student.findOne({
-            where: {
-                id: id
-            }
-        }).then(intern => {
-            res.send(intern)
-        });
-
-    })
-    //criar aluno
+    */
+//listar alunos
+app.get("/all-contracts", (req, res) => {
+    Contract.findAll({
+        raw: true
+    }).then(interns => {
+        res.send(interns)
+    });
+})
 app.post("/save-intern", (req, res) => {
         var first_name = req.body.first_name
         var last_name = req.body.last_name
         var RA = req.body.RA
-        var status = req.body.status
-        var contractId = req.body.contractId
-        var contactId = req.body.contactId
-        Student.create({
+        var email = req.body.email
+        var phone = req.body.phone
+        var company_name = req.body.company_name
+        var job_description = req.body.job_description
+        var internship_avaliation = req.body.internship_avaliation
+        Contract.create({
             first_name: first_name,
             last_name: last_name,
             RA: RA,
-            status: status,
-            contractId: contractId,
-            contactId: contactId
+            email: email,
+            phone: phone,
+            company_name: company_name,
+            job_description: job_description,
+            internship_avaliation: internship_avaliation,
+            status: "PENDENTE",
+            internship_checklist: false
         }).then(() => {
-            res.redirect("/")
+            res.send("contract created")
         })
     })
     //atualizar aluno por id
-app.put("/update-intern/:id", (req, res) => {
+app.put("/update-intern/:id/:RA", (req, res) => {
         var id = req.params.id
+        var RA = req.params.RA
         var first_name = req.body.first_name
         var last_name = req.body.last_name
-        var RA = req.body.RA
+        var email = req.body.email
+        var phone = req.body.phone
+        var company_name = req.body.company_name
+        var job_description = req.body.job_description
+        var internship_avaliation = req.body.internship_avaliation
         var status = req.body.status
-        var contractId = req.body.contractId
-        var contactId = req.body.contactId
-        Student.update({
+        var internship_checklist = req.body.internship_checklist
+        Contract.update({
             first_name: first_name,
             last_name: last_name,
-            RA: RA,
+            email: email,
+            phone: phone,
+            company_name: company_name,
+            job_description: job_description,
+            internship_avaliation: internship_avaliation,
             status: status,
-            contractId: contractId,
-            contactId: contactId
-
+            internship_checklist: internship_checklist
         }, {
+            where: {
+                RA: RA
+            }
+        }).then(() => {
+            res.send("contract" + " " + id + " " + "updated")
+        })
+
+    })
+    //deletar contrato por id
+app.delete("/delete-contract/:id", (req, res) => {
+        var id = req.params.id
+        Contract.destroy({
             where: {
                 id: id
             }
         }).then(() => {
-            res.send("intern" + " " + id + " " + "updated")
+            res.send("contract" + " " + id + " " + "deleted")
         })
     })
-    //deletar aluno por id
-app.delete("/delete-intern/:id", (req, res) => {
-    var id = req.params.id
-    Student.destroy({
+    //buscar aluno por RA - contrato
+app.get("/contract/:RA", (req, res) => {
+    var RA = req.params.RA
+    Contract.findOne({
         where: {
-            id: id
+            RA: RA
         }
-    }).then(() => {
-        res.send("intern" + " " + id + " " + "deleted")
+    }).then(intern => {
+        res.send(intern)
+    });
+})
+
+//buscar empresa por nome - contrato
+app.get("/contract/company/:company_name", (req, res) => {
+    var company_name = req.params.company_name
+    Contract.findAll({
+        where: {
+            company_name: company_name
+        }
+    }).then(intern => {
+        res.send(intern)
     })
 })
 

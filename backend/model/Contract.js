@@ -1,25 +1,52 @@
-const Student = require("./Student")
-const Company = require("./Company")
 const Sequelize = require('sequelize')
 const conn = require("../database/database")
 
 const Contract = conn.define("student_contract", {
-    studentId: {
-        type: Sequelize.INTEGER,
+    first_name: {
+        type: Sequelize.STRING,
         allowNull: false
     },
-    companyId: {
+    last_name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    RA: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+    },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        isEmail: true
+    },
+    phone: {
+        type: Sequelize.STRING,
         allowNull: false
     },
-    ocupationId: {
-        type: Sequelize.INTEGER,
+    company_name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    job_description: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    internship_avaliation: {
+        type: Sequelize.STRING,
         allowNull: false
     },
     status: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    internship_checklist: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
     }
+
+
 })
 
 Contract.sync({ force: false }).then(() => {
