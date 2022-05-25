@@ -14,4 +14,7 @@ export type RegisterInternProps = {
   internshipActivities: string;
 };
 
-export type EditInternProps = RegisterInternProps;
+export type EditInternProps = RegisterInternProps & {
+  contractStatus: string;
+  reportStatus: string;
+};

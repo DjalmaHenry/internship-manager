@@ -5,6 +5,7 @@ export const AdminUser = {
 
 export const mockInterns = [
   {
+    id: 1,
     name: "Davi Mateus",
     contractStatus: "Verified",
     reportStatus: "Pending",
@@ -12,6 +13,7 @@ export const mockInterns = [
     company: "Loomi",
   },
   {
+    id: 2,
     name: "Djalma Henrique",
     contractStatus: "Pending",
     reportStatus: "Verified",
@@ -19,6 +21,7 @@ export const mockInterns = [
     company: "Manifesto Games",
   },
   {
+    id: 3,
     name: "João Vitor Machado",
     contractStatus: "Verified",
     reportStatus: "Pending",
@@ -26,6 +29,7 @@ export const mockInterns = [
     company: "IBM",
   },
   {
+    id: 4,
     name: "Ronny Lima",
     contractStatus: "Pending",
     reportStatus: "Pending",
@@ -33,6 +37,7 @@ export const mockInterns = [
     company: "Google",
   },
   {
+    id: 5,
     name: "Lucas dos Santos",
     contractStatus: "Verified",
     reportStatus: "Verified",

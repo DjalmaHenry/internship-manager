@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { IoMdClose } from "react-icons/io";
-import { validateIntern } from "../../../assets/schemas";
+import { validateRegisterIntern } from "../../../assets/schemas";
 import { RegisterInternProps } from "../../../assets/types";
 import { ErrorMessage } from "../../../pages/Login/styles";
 
@@ -26,7 +26,7 @@ const RegisterIntern = ({ setOpenModal }: ModalProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterInternProps>({
-    resolver: yupResolver(validateIntern),
+    resolver: yupResolver(validateRegisterIntern),
   });
 
   const SubmitNewIntern = (data: RegisterInternProps) => {

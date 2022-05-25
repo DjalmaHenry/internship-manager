@@ -125,12 +125,16 @@ export const Table = styled.table`
       font-weight: 600;
       font-size: 15px;
       line-height: 16px;
+      max-width: 8rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       svg {
         cursor: pointer;
-        color: #1a7ae0;
+        color: ${(props) => (props.color ? props.color : "#1a7ae0")};
         margin: 10px;
-        font-size: 25px;
+        font-size: 20px;
         transition: all 0.25s;
       }
       svg:hover {

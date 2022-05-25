@@ -11,10 +11,13 @@ import { mockInterns } from "../../assets/utils";
 import { useState } from "react";
 import Modal from "../Modals/RegisterIntern/RegisterIntern";
 import { MdModeEditOutline } from "react-icons/md";
+import { BsFillTrashFill } from "react-icons/bs";
 import { TiDocumentText } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 
 export const TableArea = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -60,8 +63,11 @@ export const TableArea = () => {
                   <td>{intern.vacancy}</td>
                   <td>{intern.company}</td>
                   <td>
-                    <MdModeEditOutline />
+                    <MdModeEditOutline
+                      onClick={() => navigate(`/edit-intern/${intern.id}`)}
+                    />
                     <TiDocumentText />
+                    <BsFillTrashFill color="red" />
                   </td>
                 </tr>
               ))}

@@ -22,7 +22,7 @@ export const Sidebar = () => {
         <h1>Internship Manager</h1>
       </LogoArea>
       <ButtonsArea>
-        <Button>
+        <Button onClick={() => navigate("/dashboard")}>
           <MdOutlineDashboard />
           Dashboard
         </Button>

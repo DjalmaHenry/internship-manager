@@ -14,6 +14,20 @@ export const TextWelcome = styled.h1`
   font-weight: 600;
   font-size: 20px;
   margin-left: 5rem;
+  display: flex;
+  align-items: center;
+
+  svg {
+    color: #1a7ae0;
+    font-size: 40px;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+
+  svg:hover {
+    color: #1a5ae0;
+  }
 `;
 
 export const UserInfos = styled.div`
