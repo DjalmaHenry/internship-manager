@@ -10,8 +10,13 @@ const Coordinator = conn.define("coordinator", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    contactId: {
-        type: Sequelize.INTEGER,
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        isEmail: true
+    },
+    phone: {
+        type: Sequelize.STRING,
         allowNull: false
     }
 })
