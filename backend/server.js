@@ -69,7 +69,7 @@ app.post("/save-intern", (req, res) => {
         })
     })
     //atualizar aluno por id
-app.put("/update-intern/:id/:RA", (req, res) => {
+app.put("/update-intern/:RA", (req, res) => {
         var id = req.params.id
         var RA = req.params.RA
         var first_name = req.body.first_name
@@ -96,7 +96,7 @@ app.put("/update-intern/:id/:RA", (req, res) => {
                 RA: RA
             }
         }).then(() => {
-            res.send("contract" + " " + id + " " + "updated")
+            res.send("contract" + " " + RA + " " + "updated")
         })
 
     })
