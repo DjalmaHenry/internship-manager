@@ -17,25 +17,25 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-        res.send({ message: 'API Rodando' })
+    res.send({ message: 'API Rodando' })
+})
+
+//criar coordenador
+app.post("/save-coordinator", (req, res) => {
+    var name = req.body.name
+    var password = req.body.password
+    var email = req.body.email
+    var phone = req.body.phone
+    Coordinator.create({
+        name: name,
+        password: password,
+        email: email,
+        phone: phone
+    }).then(() => {
+        res.send("coordinator saved")
     })
-    /*
-    //criar coordenador
-    app.post("/save-coordinator", (req, res) => {
-        var name = req.body.name
-        var password = req.body.password
-        var email = req.body.email
-        var phone = req.body.phone
-        Coordinator.create({
-            name: name,
-            password: password,
-            email: email,
-            phone: phone
-        }).then(() => {
-            res.send("coordinator saved")
-        })
-    })
-    */
+})
+
 app.put("/update-coordinator/:id", (req, res) => {
     var id = req.params.id
     var name = req.body.name
