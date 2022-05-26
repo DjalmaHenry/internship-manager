@@ -3,6 +3,7 @@ const app = express()
 const conn = require('./database/database')
 const bodyParser = require('body-parser')
 const Contract = require('./model/Contract')
+const Coordinator = require('./model/Coordinator')
 
 
 
@@ -16,12 +17,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    res.send({ message: 'API Rodando' })
-})
-
-//criar coordenador
-/*
-app.post("/save-coordinator", (req, res) => {
+        res.send({ message: 'API Rodando' })
+    })
+    /*
+    //criar coordenador
+    app.post("/save-coordinator", (req, res) => {
         var name = req.body.name
         var password = req.body.password
         var email = req.body.email
@@ -36,8 +36,39 @@ app.post("/save-coordinator", (req, res) => {
         })
     })
     */
+app.put("/update-coordinator/:id", (req, res) => {
+    var id = req.params.id
+    var name = req.body.name
+    var password = req.body.password
+    var email = req.body.email
+    var phone = req.body.phone
+    Coordinator.update({
+        name: name,
+        password: password,
+        email: email,
+        phone: phone
+    }, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.send("coordinator updated")
+    })
+})
+
+app.delete("/delete-coordinator/:id", (req, res) => {
+    var id = req.params.id
+    Coordinator.destroy({
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.send("coordinator " + " " + id + " " + " deleted")
+    })
+})
+
 //listar alunos
-app.get("/all-contracts", (req, res) => {
+app.get("/all-interns", (req, res) => {
     Contract.findAll({
         raw: true
     }).then(interns => {
@@ -68,7 +99,7 @@ app.post("/save-intern", (req, res) => {
             res.send("contract created")
         })
     })
-    //atualizar aluno por id
+    //atualizar aluno por RA
 app.put("/update-intern/:RA", (req, res) => {
         var id = req.params.id
         var RA = req.params.RA
@@ -100,8 +131,8 @@ app.put("/update-intern/:RA", (req, res) => {
         })
 
     })
-    //deletar contrato por id
-app.delete("/delete-contract/:RA", (req, res) => {
+    //deletar contrato por RA
+app.delete("/delete-intern/:RA", (req, res) => {
         var RA = req.params.RA
         Contract.destroy({
             where: {
@@ -124,7 +155,7 @@ app.get("/contract/:RA", (req, res) => {
 })
 
 //buscar empresa por nome - contrato
-app.get("/contract/company/:company_name", (req, res) => {
+app.get("/intern/company/:company_name", (req, res) => {
     var company_name = req.params.company_name
     Contract.findAll({
         where: {
