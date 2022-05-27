@@ -103,7 +103,7 @@ app.post("/save-intern", (req, res) => {
             job_description: job_description,
             internship_avaliation: internship_avaliation,
             status: "Pending",
-            internship_checklist: false
+            internship_checklist: "Pending"
         }).then(() => {
             res.send("contract created")
         })

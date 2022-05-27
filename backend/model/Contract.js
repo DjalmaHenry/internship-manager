@@ -42,7 +42,7 @@ const Contract = conn.define("student_contract", {
         allowNull: false
     },
     internship_checklist: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
         allowNull: false
     }
 
