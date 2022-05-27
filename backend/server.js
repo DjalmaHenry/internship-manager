@@ -36,6 +36,14 @@ app.post("/save-coordinator", (req, res) => {
     })
 })
 
+app.get("/coordinator", (req, res) => {
+    Coordinator.findAll({
+        raw: true
+    }).then(coordinator => {
+        res.send(coordinator)
+    })
+})
+
 app.put("/update-coordinator/:id", (req, res) => {
     var id = req.params.id
     var name = req.body.name
