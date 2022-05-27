@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Infos, Sidebar } from "../../components";
 import { EditArea } from "../../components/EditArea/EditaArea";
-import { Infos } from "../../components/Infos";
-import { Sidebar } from "../../components/Sidebar";
 import { Container, ContainerEditArea } from "./styles";
 
 export const Edit = () => {

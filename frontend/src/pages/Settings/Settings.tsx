@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Infos, Sidebar, TableArea } from "../../components";
+import { Infos } from "../../components";
+import { Sidebar } from "../../components/Sidebar/Sidebar";
+import { Container, ContainerEditArea } from "./styles";
 
-import { Container, ContainerDashboard } from "./styles";
-
-export const Dashboard = () => {
+export const Settings = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,10 +16,9 @@ export const Dashboard = () => {
   return (
     <Container>
       <Sidebar />
-      <ContainerDashboard>
+      <ContainerEditArea>
         <Infos />
-        <TableArea />
-      </ContainerDashboard>
+      </ContainerEditArea>
     </Container>
   );
 };

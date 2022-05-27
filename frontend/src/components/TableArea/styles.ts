@@ -146,7 +146,8 @@ export const Table = styled.table`
 `;
 
 export const StatusVerified = styled.p`
-  width: 3.6rem;
+  width: 5rem;
+  text-align: center;
   background-color: #deede5;
   color: #427a5b;
   border-radius: 5px;
@@ -154,7 +155,8 @@ export const StatusVerified = styled.p`
 `;
 
 export const StatusPending = styled.p`
-  width: 3.6rem;
+  width: 5rem;
+  text-align: center;
   background-color: #fdf8ce;
   color: #938406;
   border-radius: 5px;
