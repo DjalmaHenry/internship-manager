@@ -2,9 +2,10 @@ import { Container, TextWelcome, UserInfos } from "./styles";
 import AdminLogo from "../../assets/img/AdminLogo.png";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { EditAdminProps } from "../../assets/types";
 
 export const Infos = () => {
-  const [dataAdmin, setDataAdmin] = useState<any>([]);
+  const [dataAdmin, setDataAdmin] = useState<EditAdminProps>();
 
   useEffect(() => {
     api
@@ -21,7 +22,7 @@ export const Infos = () => {
       <UserInfos>
         <img src={AdminLogo} alt="Admin Logo" />
         <div>
-          <h1>{dataAdmin.name}</h1>
+          <h1>{dataAdmin?.name}</h1>
           <p>Admin</p>
         </div>
       </UserInfos>

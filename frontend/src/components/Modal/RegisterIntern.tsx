@@ -4,6 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { validateRegisterIntern } from "../../assets/schemas";
 import { RegisterInternProps } from "../../assets/types";
 import { ErrorMessage } from "../../pages/Login/styles";
+import { api } from "../../services/api";
 
 import {
   BackgroundModal,
@@ -30,8 +31,14 @@ const RegisterIntern = ({ setOpenModal }: ModalProps) => {
   });
 
   const SubmitNewIntern = (data: RegisterInternProps) => {
-    console.log(data);
-    setOpenModal(false);
+    api
+      .post("save-intern", data)
+      .then((response) => {
+        if (response.status === 200) {
+          window.location.reload();
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -50,18 +57,18 @@ const RegisterIntern = ({ setOpenModal }: ModalProps) => {
         <InputsContainer>
           <InputContainer>
             <p>First name</p>
-            <input type="text" {...register("firstName")} autoComplete="off" />
-            <ErrorMessage>{errors.firstName?.message}</ErrorMessage>
+            <input type="text" {...register("first_name")} autoComplete="off" />
+            <ErrorMessage>{errors.first_name?.message}</ErrorMessage>
           </InputContainer>
           <InputContainer>
             <p>Last name</p>
-            <input type="text" {...register("lastName")} autoComplete="off" />
-            <ErrorMessage>{errors.lastName?.message}</ErrorMessage>
+            <input type="text" {...register("last_name")} autoComplete="off" />
+            <ErrorMessage>{errors.last_name?.message}</ErrorMessage>
           </InputContainer>
           <InputContainer>
             <p>RA</p>
-            <input type="text" {...register("ra")} autoComplete="off" />
-            <ErrorMessage>{errors.ra?.message}</ErrorMessage>
+            <input type="text" {...register("RA")} autoComplete="off" />
+            <ErrorMessage>{errors.RA?.message}</ErrorMessage>
           </InputContainer>
         </InputsContainer>
         <InputsContainer>
@@ -79,10 +86,10 @@ const RegisterIntern = ({ setOpenModal }: ModalProps) => {
             <p>Contracting Company</p>
             <input
               type="text"
-              {...register("contractingCompany")}
+              {...register("company_name")}
               autoComplete="off"
             />
-            <ErrorMessage>{errors.contractingCompany?.message}</ErrorMessage>
+            <ErrorMessage>{errors.company_name?.message}</ErrorMessage>
           </InputContainer>
         </InputsContainer>
         <TextareaContainer>
@@ -90,19 +97,19 @@ const RegisterIntern = ({ setOpenModal }: ModalProps) => {
             <p>Job Description</p>
             <textarea
               rows={10}
-              {...register("jobDescription")}
+              {...register("job_description")}
               autoComplete="off"
             />
-            <ErrorMessage>{errors.jobDescription?.message}</ErrorMessage>
+            <ErrorMessage>{errors.job_description?.message}</ErrorMessage>
           </TextareaBox>
           <TextareaBox>
             <p>Internship Activities (separate with commas)</p>
             <textarea
               rows={10}
-              {...register("internshipActivities")}
+              {...register("internship_avaliation")}
               autoComplete="off"
             />
-            <ErrorMessage>{errors.internshipActivities?.message}</ErrorMessage>
+            <ErrorMessage>{errors.internship_avaliation?.message}</ErrorMessage>
           </TextareaBox>
         </TextareaContainer>
         <ButtonSubmit>Register intern</ButtonSubmit>

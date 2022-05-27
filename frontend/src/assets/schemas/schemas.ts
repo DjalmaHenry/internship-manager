@@ -3,8 +3,6 @@ import * as yup from "yup";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-const onlyNumbersRegExp = /^[0-9]/;
-
 export const validateLoginAndPassword = yup.object().shape({
   email: yup
     .string()
@@ -14,13 +12,9 @@ export const validateLoginAndPassword = yup.object().shape({
 });
 
 export const validateRegisterIntern = yup.object().shape({
-  firstName: yup.string().required("Invalid name"),
-  lastName: yup.string().required("Invalid lastname"),
-  ra: yup
-    .string()
-    .matches(onlyNumbersRegExp, "RA is not valid")
-    .required("RA is required")
-    .max(11, "Max is 11 digits"),
+  first_name: yup.string().required("Invalid name"),
+  last_name: yup.string().required("Invalid lastname"),
+  RA: yup.number().typeError("Invalid RA").required("RA is required"),
   email: yup
     .string()
     .email("Email format incorrect")
@@ -29,9 +23,9 @@ export const validateRegisterIntern = yup.object().shape({
     .string()
     .matches(phoneRegExp, "Phone not valid")
     .required("Phone is required"),
-  contractingCompany: yup.string().required("Invalid company"),
-  jobDescription: yup.string().required("Invalid job description"),
-  internshipActivities: yup.string().required("Invalid internship activities"),
+  company_name: yup.string().required("Invalid company"),
+  job_description: yup.string().required("Invalid job description"),
+  internship_avaliation: yup.string().required("Invalid internship activities"),
 });
 
 export const validateEditIntern = yup.object().shape({

@@ -38,8 +38,14 @@ export const EditArea = () => {
   });
 
   const SubmitEditIntern = (data: EditInternProps) => {
-    api.put(`update-intern/${ra}`, data);
-    navigate("/dashboard");
+    api
+      .put(`update-intern/${ra}`, data)
+      .then((response) => {
+        if (response.status === 200) {
+          navigate("/dashboard");
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -72,7 +78,7 @@ export const EditArea = () => {
           <p>RA</p>
           <input
             type="number"
-            {...register("ra")}
+            {...register("RA")}
             autoComplete="off"
             readOnly
             defaultValue={internData.RA}

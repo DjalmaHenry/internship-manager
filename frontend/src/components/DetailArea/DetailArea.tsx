@@ -7,7 +7,6 @@ import { Container, InfosContainer, Title } from "./styles";
 
 export const DetailArea = () => {
   const { ra } = useParams();
-  console.log(ra);
 
   const [intern, setDataIntern] = useState<any>([]);
 
@@ -47,7 +46,7 @@ export const DetailArea = () => {
       <InfosContainer>
         <div>
           <Title>Report Status</Title>
-          {intern.internship_checklist === false ? (
+          {intern.internship_checklist === "Pending" ? (
             <StatusPending>Pending</StatusPending>
           ) : (
             <StatusVerified>Verified</StatusVerified>

@@ -7,17 +7,18 @@ import {
   Table,
 } from "./styles";
 import { BiSearchAlt } from "react-icons/bi";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Modal from "../Modal/RegisterIntern";
 import { MdModeEditOutline } from "react-icons/md";
 import { BsFillTrashFill } from "react-icons/bs";
 import { TiDocumentText } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
+import { InternProps } from "../../assets/types";
 
 export const TableArea = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [dataInterns, setDataInterns] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [dataInterns, setDataInterns] = useState<InternProps[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,11 +29,15 @@ export const TableArea = () => {
   }, []);
 
   const deleteIntern = (ra: number) => {
-    api.delete(`delete-intern/${ra}`);
-    window.location.reload();
+    api
+      .delete(`delete-intern/${ra}`)
+      .then((response) => {
+        if (response.status === 200) {
+          window.location.reload();
+        }
+      })
+      .catch((error) => console.log(error));
   };
-
-  console.log(dataInterns.length);
 
   return (
     <>
@@ -58,7 +63,7 @@ export const TableArea = () => {
               </tr>
             </thead>
             <tbody>
-              {dataInterns.map((intern: any) => (
+              {dataInterns.map((intern: InternProps) => (
                 <tr key={intern.RA}>
                   <td>
                     {intern.first_name} {intern.last_name}
@@ -71,7 +76,7 @@ export const TableArea = () => {
                     )}
                   </td>
                   <td>
-                    {intern.internship_checklist === 0 ? (
+                    {intern.internship_checklist === "Pending" ? (
                       <StatusPending>Pending</StatusPending>
                     ) : (
                       <StatusVerified>Verified</StatusVerified>

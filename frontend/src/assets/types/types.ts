@@ -6,7 +6,7 @@ export type User = {
 export type RegisterInternProps = {
   first_name: string;
   last_name: string;
-  ra: number;
+  RA: number;
   email: string;
   phone: string;
   company_name: string;
@@ -18,6 +18,8 @@ export type EditInternProps = RegisterInternProps & {
   status: string;
   internship_checklist: string;
 };
+
+export type InternProps = EditInternProps;
 
 export type EditAdminProps = {
   name: string;

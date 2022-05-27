@@ -44,7 +44,7 @@ export const AdminArea = () => {
 
   return (
     <Container>
-      <Title>EDIT USER INFORMATION</Title>
+      <Title>EDIT ADMIN INFORMATION</Title>
       <AdminInfosContainer>
         <img src={AdminLogo} alt="Admin" />
         <FormAdmin onSubmit={handleSubmit(SubmitNewAdminInfos)}>
