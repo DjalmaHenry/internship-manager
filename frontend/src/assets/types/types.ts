@@ -4,17 +4,24 @@ export type User = {
 };
 
 export type RegisterInternProps = {
-  firstName: string;
-  lastName: string;
-  ra: string;
+  first_name: string;
+  last_name: string;
+  ra: number;
   email: string;
   phone: string;
-  contractingCompany: string;
-  jobDescription: string;
-  internshipActivities: string;
+  company_name: string;
+  job_description: string;
+  internship_avaliation: string;
 };
 
 export type EditInternProps = RegisterInternProps & {
-  contractStatus: string;
-  reportStatus: string;
+  status: string;
+  internship_checklist: string;
+};
+
+export type EditAdminProps = {
+  name: string;
+  password: string;
+  email: string;
+  phone: string;
 };

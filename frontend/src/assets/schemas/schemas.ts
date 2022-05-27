@@ -35,13 +35,8 @@ export const validateRegisterIntern = yup.object().shape({
 });
 
 export const validateEditIntern = yup.object().shape({
-  firstName: yup.string().required("Invalid name"),
-  lastName: yup.string().required("Invalid lastname"),
-  ra: yup
-    .string()
-    .matches(onlyNumbersRegExp, "RA is not valid")
-    .required("RA is required")
-    .max(11, "Max is 11 digits"),
+  first_name: yup.string().required("Invalid name"),
+  last_name: yup.string().required("Invalid lastname"),
   email: yup
     .string()
     .email("Email format incorrect")
@@ -50,9 +45,22 @@ export const validateEditIntern = yup.object().shape({
     .string()
     .matches(phoneRegExp, "Phone not valid")
     .required("Phone is required"),
-  contractingCompany: yup.string().required("Invalid company"),
-  contractStatus: yup.string().required("Select an valid option"),
-  reportStatus: yup.string().required("Select an valid option"),
-  jobDescription: yup.string().required("Invalid job description"),
-  internshipActivities: yup.string().required("Invalid internship activities"),
+  company_name: yup.string().required("Invalid company"),
+  status: yup.string().required("Select an valid option"),
+  internship_checklist: yup.string().required("Select an valid option"),
+  job_description: yup.string().required("Invalid job description"),
+  internship_avaliation: yup.string().required("Invalid internship activities"),
+});
+
+export const validateEditAdmin = yup.object().shape({
+  name: yup.string().required("Invalid name"),
+  password: yup.string().required("Invalid password"),
+  email: yup
+    .string()
+    .email("Email format incorrect")
+    .required("Incorrect email"),
+  phone: yup
+    .string()
+    .matches(phoneRegExp, "Phone not valid")
+    .required("Phone is required"),
 });

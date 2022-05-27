@@ -1,53 +1,65 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { api } from "../../services/api";
 import { InternCard } from "../InternCard/InternCard";
 import { StatusPending, StatusVerified } from "../TableArea/styles";
 import { Container, InfosContainer, Title } from "./styles";
 
 export const DetailArea = () => {
-  const reportStatus = "Pending";
-  const reportStatus1 = "Verified";
+  const { ra } = useParams();
+  console.log(ra);
+
+  const [intern, setDataIntern] = useState<any>([]);
+
+  useEffect(() => {
+    api
+      .get(`contract/${ra}`)
+      .then((response) => setDataIntern(response.data))
+      .catch((error) => console.log(error));
+  }, [ra]);
 
   return (
     <Container>
-      <InternCard />
+      <InternCard
+        firstName={intern.first_name}
+        lastName={intern.last_name}
+        ra={intern.RA}
+        company={intern.company_name}
+      />
       <InfosContainer>
         <div>
           <Title>Contract Status</Title>
-          {reportStatus === "Pending" ? (
-            <StatusPending>{reportStatus}</StatusPending>
+          {intern.status === "Pending" ? (
+            <StatusPending>Pending</StatusPending>
           ) : (
-            <StatusVerified>{reportStatus}</StatusVerified>
+            <StatusVerified>Verified</StatusVerified>
           )}
         </div>
         <div>
           <Title>Email</Title>
-          <h1>davimateusga@gmail.com</h1>
+          <h1>{intern.email}</h1>
         </div>
         <div>
           <Title>Job Description</Title>
-          <h1>
-            Full Stack web developer Desired knowledge in programming languages:
-            React Node.Js MySQL
-          </h1>
+          <h1>{intern.job_description}</h1>
         </div>
       </InfosContainer>
       <InfosContainer>
         <div>
           <Title>Report Status</Title>
-          {reportStatus1 === "Verified" ? (
-            <StatusVerified>{reportStatus1}</StatusVerified>
+          {intern.internship_checklist === false ? (
+            <StatusPending>Pending</StatusPending>
           ) : (
-            <StatusPending>{reportStatus1}</StatusPending>
+            <StatusVerified>Verified</StatusVerified>
           )}
         </div>
         <div>
           <Title>Phone</Title>
-          <h1>87 98847 6864</h1>
+          <h1>{intern.phone}</h1>
         </div>
         <div>
           <Title>Internship Activities</Title>
-          <h1>
-            Develop full flow web applications support bugs support design
-          </h1>
+          <h1>{intern.internship_avaliation}</h1>
         </div>
       </InfosContainer>
     </Container>

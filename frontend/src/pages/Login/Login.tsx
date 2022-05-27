@@ -22,16 +22,18 @@ import {
 
 import { validateLoginAndPassword } from "../../assets/schemas";
 import { User } from "../../assets/types";
-import { AdminUser, generateToken } from "../../assets/utils";
-
 import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
+import { generateToken } from "../../assets/utils";
 
 export const Login = () => {
   const [visible, setVisible] = useState(true);
-
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -42,24 +44,30 @@ export const Login = () => {
 
   const toggleVisible = () => setVisible(!visible);
 
-  const onSubmit = (data: User) => {
-    if (
-      data.email !== AdminUser.email ||
-      data.password !== AdminUser.password
-    ) {
-      return setError(true);
-    }
-    setError(false);
-    const token = generateToken();
-    localStorage.setItem("accessToken", token);
-    navigate("/dashboard");
-  };
-
   useEffect(() => {
     if (localStorage.getItem("accessToken") !== null) {
       navigate("/dashboard");
+    } else {
+      api
+        .get("coordinator")
+        .then((response) => {
+          setEmail(response.data[0].email);
+          setPassword(response.data[0].password);
+        })
+        .catch((error) => console.log(error));
     }
   }, [navigate]);
+
+  const onSubmit = (data: User) => {
+    if (data.email !== email || data.password !== password) {
+      setError(true);
+    } else {
+      setError(false);
+      const token = generateToken();
+      localStorage.setItem("accessToken", token);
+      navigate("/dashboard");
+    }
+  };
 
   return (
     <Container>

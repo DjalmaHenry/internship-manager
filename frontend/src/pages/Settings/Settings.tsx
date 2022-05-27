@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Infos } from "../../components";
+import { AdminArea, Infos } from "../../components";
+
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Container, ContainerEditArea } from "./styles";
 
@@ -18,6 +19,7 @@ export const Settings = () => {
       <Sidebar />
       <ContainerEditArea>
         <Infos />
+        <AdminArea />
       </ContainerEditArea>
     </Container>
   );

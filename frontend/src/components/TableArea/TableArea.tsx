@@ -7,17 +7,32 @@ import {
   Table,
 } from "./styles";
 import { BiSearchAlt } from "react-icons/bi";
-import { mockInterns } from "../../assets/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../Modal/RegisterIntern";
 import { MdModeEditOutline } from "react-icons/md";
 import { BsFillTrashFill } from "react-icons/bs";
 import { TiDocumentText } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
 
 export const TableArea = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [dataInterns, setDataInterns] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    api
+      .get("all-interns")
+      .then((response) => setDataInterns(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const deleteIntern = (ra: number) => {
+    api.delete(`delete-intern/${ra}`);
+    window.location.reload();
+  };
+
+  console.log(dataInterns.length);
 
   return (
     <>
@@ -43,31 +58,38 @@ export const TableArea = () => {
               </tr>
             </thead>
             <tbody>
-              {mockInterns.map((intern, index) => (
-                <tr key={index}>
-                  <td>{intern.name}</td>
+              {dataInterns.map((intern: any) => (
+                <tr key={intern.RA}>
                   <td>
-                    {intern.contractStatus === "Pending" ? (
-                      <StatusPending>{intern.contractStatus}</StatusPending>
+                    {intern.first_name} {intern.last_name}
+                  </td>
+                  <td>
+                    {intern.status === "Pending" ? (
+                      <StatusPending>{intern.status}</StatusPending>
                     ) : (
-                      <StatusVerified>{intern.contractStatus}</StatusVerified>
+                      <StatusVerified>{intern.status}</StatusVerified>
                     )}
                   </td>
                   <td>
-                    {intern.reportStatus === "Pending" ? (
-                      <StatusPending>{intern.reportStatus}</StatusPending>
+                    {intern.internship_checklist === 0 ? (
+                      <StatusPending>Pending</StatusPending>
                     ) : (
-                      <StatusVerified>{intern.reportStatus}</StatusVerified>
+                      <StatusVerified>Verified</StatusVerified>
                     )}
                   </td>
-                  <td>{intern.vacancy}</td>
-                  <td>{intern.company}</td>
+                  <td>{intern.job_description}</td>
+                  <td>{intern.company_name}</td>
                   <td>
                     <MdModeEditOutline
-                      onClick={() => navigate(`/edit-intern/${intern.id}`)}
+                      onClick={() => navigate(`/edit-intern/${intern.RA}`)}
                     />
-                    <TiDocumentText onClick={() => navigate(`/detail-intern/${intern.id}`)}/>
-                    <BsFillTrashFill color="red" />
+                    <TiDocumentText
+                      onClick={() => navigate(`/detail-intern/${intern.RA}`)}
+                    />
+                    <BsFillTrashFill
+                      color="red"
+                      onClick={() => deleteIntern(intern.RA)}
+                    />
                   </td>
                 </tr>
               ))}
