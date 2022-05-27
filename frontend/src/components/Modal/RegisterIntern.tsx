@@ -1,9 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { IoMdClose } from "react-icons/io";
-import { validateRegisterIntern } from "../../../assets/schemas";
-import { RegisterInternProps } from "../../../assets/types";
-import { ErrorMessage } from "../../../pages/Login/styles";
+import { validateRegisterIntern } from "../../assets/schemas";
+import { RegisterInternProps } from "../../assets/types";
+import { ErrorMessage } from "../../pages/Login/styles";
 
 import {
   BackgroundModal,

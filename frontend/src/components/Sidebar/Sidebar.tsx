@@ -26,7 +26,7 @@ export const Sidebar = () => {
           <MdOutlineDashboard />
           Dashboard
         </Button>
-        <Button>
+        <Button onClick={() => navigate("/settings")}>
           <IoSettingsOutline />
           Settings
         </Button>

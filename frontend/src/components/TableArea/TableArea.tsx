@@ -9,7 +9,7 @@ import {
 import { BiSearchAlt } from "react-icons/bi";
 import { mockInterns } from "../../assets/utils";
 import { useState } from "react";
-import Modal from "../Modals/RegisterIntern/RegisterIntern";
+import Modal from "../Modal/RegisterIntern";
 import { MdModeEditOutline } from "react-icons/md";
 import { BsFillTrashFill } from "react-icons/bs";
 import { TiDocumentText } from "react-icons/ti";
@@ -66,7 +66,7 @@ export const TableArea = () => {
                     <MdModeEditOutline
                       onClick={() => navigate(`/edit-intern/${intern.id}`)}
                     />
-                    <TiDocumentText />
+                    <TiDocumentText onClick={() => navigate(`/detail-intern/${intern.id}`)}/>
                     <BsFillTrashFill color="red" />
                   </td>
                 </tr>
