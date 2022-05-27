@@ -26,8 +26,8 @@ describe('Testing API', () => {
             })
         expect(res.statusCode).toEqual(200)
     })
-    it('should test update a contract with the id 13 and RA 26', async() => {
-        const res = await request(app).put("/update-intern/13/26").send({
+    it('should test update a contract with the RA 26', async() => {
+        const res = await request(app).put("/update-intern/26").send({
             first_name: "teste ATUALIZADO",
             last_name: "sobrenome ATUALIZADO",
             email: "atualizado@mail.com",
@@ -39,11 +39,11 @@ describe('Testing API', () => {
         expect(res.statusCode).toEqual(200)
     })
     it('should test delete a contract with the RA 26', async() => {
-        const res = await request(app).delete("/delete-contract/26")
+        const res = await request(app).delete("/delete-intern/26")
         expect(res.statusCode).toEqual(200)
     })
     it('should test find contracts by company name Stilingue', async() => {
-        const res = await request(app).get("/contract/company/Stilingue")
+        const res = await request(app).get("/intern/company/Stilingue")
         expect(res.statusCode).toEqual(200)
     })
 })

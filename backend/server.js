@@ -4,8 +4,9 @@ const conn = require('./database/database')
 const bodyParser = require('body-parser')
 const Contract = require('./model/Contract')
 const Coordinator = require('./model/Coordinator')
+const cors = require('cors')
 
-
+app.use(cors())
 
 conn.authenticate().then(() => {
     console.log("conexao feita")
