@@ -94,7 +94,7 @@ Agora você pode acessar [`localhost:3000`](http://localhost:3000) no seu navega
 - Instale as dependências com `npm install` no terminal
 - Inicie o servidor com `node index.js` no terminal
 
-Agora você pode acessar [`localhost:8080/all-interns`](localhost:8080/all-interns) no seu navegador para visualizar uma das rotas.
+Agora você pode acessar [`localhost:8080/all-interns`](http://localhost:8080/all-interns) no seu navegador para visualizar uma das rotas.
 OBS.: Recomendo firefox para visualizar melhor o JSON.
 
 ## 👨‍👦‍👦 Colaboradores
