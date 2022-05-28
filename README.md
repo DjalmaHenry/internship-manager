@@ -44,14 +44,6 @@
   <img alt="tela de edição de perfil" src="https://user-images.githubusercontent.com/45500812/170839342-9b2422f0-2822-4714-80b5-35639742107c.png" width="100%">
 </p>
 
-## 📷 Versão mobile
-
-<div style="display: inline_block" align="center">
-    <img alt="tela de login" src="https://user-images.githubusercontent.com/45500812/169736835-6e5ff0ee-d8f7-4e1c-94ca-f9fe5405b589.jpeg" width="30%">
-    <img alt="tela de itens recicláveis" src="https://user-images.githubusercontent.com/45500812/169736870-140be1f9-1c54-469d-974b-cd736199a6f1.jpeg" width="30%">
-    <img alt="tela de detalhes do item reciclável" src="https://user-images.githubusercontent.com/45500812/169736903-9c65afff-0a09-4623-82de-4158d7190d44.jpeg" width="30%">
-</div>
-
 ## ✨ Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
