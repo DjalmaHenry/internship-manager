@@ -48,24 +48,6 @@ export const HeaderTable = styled.div`
     line-height: 16px;
   }
 
-  input {
-    font-family: "Manrope", sans-serif;
-    width: 7rem;
-    height: 1rem;
-    background: #fafafa;
-    border: 1px solid #e6e6e6;
-    border-radius: 5px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-    ::placeholder {
-      font-size: 16px;
-      font-weight: 400;
-    }
-  }
-
-  input:focus {
-    outline: 0;
-  }
-
   svg {
     position: relative;
     left: 7.5rem;
@@ -100,6 +82,28 @@ export const Table = styled.table`
   border-collapse: collapse;
   margin-top: 20px;
   font-family: "Manrope", sans-serif;
+
+  tbody {
+    div {
+      position: relative;
+      left: 10rem;
+      top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        position: relative;
+        left: 10rem;
+        top: 2rem;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        color: #393939;
+      }
+    }
+  }
+
   tr {
     th {
       font-weight: 600;

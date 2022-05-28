@@ -74,6 +74,7 @@ export const ButtonSubmit = styled.button`
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
+  width: 100%;
   color: white;
 `;
 

@@ -5,6 +5,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 
 import Logo from "../../assets/img/Logo.svg";
+import { Fade } from "react-reveal";
 import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
@@ -17,24 +18,26 @@ export const Sidebar = () => {
 
   return (
     <Container>
-      <LogoArea>
-        <img src={Logo} alt="logo" />
-        <h1>Internship Manager</h1>
-      </LogoArea>
-      <ButtonsArea>
-        <Button onClick={() => navigate("/dashboard")}>
-          <MdOutlineDashboard />
-          Dashboard
-        </Button>
-        <Button onClick={() => navigate("/settings")}>
-          <IoSettingsOutline />
-          Settings
-        </Button>
-        <Button color="#A65959" onClick={handleLogout}>
-          <IoMdLogOut />
-          Logout
-        </Button>
-      </ButtonsArea>
+      <Fade left>
+        <LogoArea>
+          <img src={Logo} alt="logo" />
+          <h1>Internship Manager</h1>
+        </LogoArea>
+        <ButtonsArea>
+          <Button onClick={() => navigate("/dashboard")}>
+            <MdOutlineDashboard />
+            Dashboard
+          </Button>
+          <Button onClick={() => navigate("/settings")}>
+            <IoSettingsOutline />
+            Settings
+          </Button>
+          <Button color="#A65959" onClick={handleLogout}>
+            <IoMdLogOut />
+            Logout
+          </Button>
+        </ButtonsArea>
+      </Fade>
     </Container>
   );
 };

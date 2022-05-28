@@ -6,6 +6,7 @@ import {
   InputsContainer,
   Title,
 } from "./styles";
+import { Fade } from "react-reveal";
 import AdminLogo from "../../assets/img/AdminLogo.png";
 import { ErrorMessage } from "../../pages/Login/styles";
 import { useForm } from "react-hook-form";
@@ -44,56 +45,60 @@ export const AdminArea = () => {
 
   return (
     <Container>
-      <Title>EDIT ADMIN INFORMATION</Title>
+      <Fade top>
+        <Title>EDIT ADMIN INFORMATION</Title>
+      </Fade>
       <AdminInfosContainer>
-        <img src={AdminLogo} alt="Admin" />
-        <FormAdmin onSubmit={handleSubmit(SubmitNewAdminInfos)}>
-          <InputsContainer>
-            <InputContainer>
-              <p>Name</p>
-              <input
-                type="text"
-                autoComplete="off"
-                {...register("name")}
-                defaultValue={dataAdmin.name}
-              />
-              <ErrorMessage>{errors.name?.message}</ErrorMessage>
-            </InputContainer>
-            <InputContainer>
-              <p>Password</p>
-              <input
-                type="password"
-                autoComplete="off"
-                {...register("password")}
-                defaultValue={dataAdmin.password}
-              />
-              <ErrorMessage>{errors.password?.message}</ErrorMessage>
-            </InputContainer>
-          </InputsContainer>
-          <InputsContainer>
-            <InputContainer>
-              <p>Email</p>
-              <input
-                type="text"
-                autoComplete="off"
-                {...register("email")}
-                defaultValue={dataAdmin.email}
-              />
-              <ErrorMessage>{errors.email?.message}</ErrorMessage>
-            </InputContainer>
-            <InputContainer>
-              <p>Phone</p>
-              <input
-                type="text"
-                autoComplete="off"
-                {...register("phone")}
-                defaultValue={dataAdmin.phone}
-              />
-              <ErrorMessage>{errors.phone?.message}</ErrorMessage>
-            </InputContainer>
-          </InputsContainer>
-          <button>Save</button>
-        </FormAdmin>
+        <Fade bottom>
+          <img src={AdminLogo} alt="Admin" />
+          <FormAdmin onSubmit={handleSubmit(SubmitNewAdminInfos)}>
+            <InputsContainer>
+              <InputContainer>
+                <p>Name</p>
+                <input
+                  type="text"
+                  autoComplete="off"
+                  {...register("name")}
+                  defaultValue={dataAdmin.name}
+                />
+                <ErrorMessage>{errors.name?.message}</ErrorMessage>
+              </InputContainer>
+              <InputContainer>
+                <p>Password</p>
+                <input
+                  type="password"
+                  autoComplete="off"
+                  {...register("password")}
+                  defaultValue={dataAdmin.password}
+                />
+                <ErrorMessage>{errors.password?.message}</ErrorMessage>
+              </InputContainer>
+            </InputsContainer>
+            <InputsContainer>
+              <InputContainer>
+                <p>Email</p>
+                <input
+                  type="text"
+                  autoComplete="off"
+                  {...register("email")}
+                  defaultValue={dataAdmin.email}
+                />
+                <ErrorMessage>{errors.email?.message}</ErrorMessage>
+              </InputContainer>
+              <InputContainer>
+                <p>Phone</p>
+                <input
+                  type="text"
+                  autoComplete="off"
+                  {...register("phone")}
+                  defaultValue={dataAdmin.phone}
+                />
+                <ErrorMessage>{errors.phone?.message}</ErrorMessage>
+              </InputContainer>
+            </InputsContainer>
+            <button>Save</button>
+          </FormAdmin>
+        </Fade>
       </AdminInfosContainer>
     </Container>
   );

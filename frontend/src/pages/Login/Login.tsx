@@ -6,6 +6,7 @@ import { AiFillLock, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Fade } from "react-reveal";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
@@ -30,8 +31,7 @@ export const Login = () => {
   const [visible, setVisible] = useState(true);
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [adminData, setAdminData] = useState<any>([]);
   const [error, setError] = useState(false);
 
   const {
@@ -51,15 +51,17 @@ export const Login = () => {
       api
         .get("coordinator")
         .then((response) => {
-          setEmail(response.data[0].email);
-          setPassword(response.data[0].password);
+          setAdminData(response.data[0]);
         })
         .catch((error) => console.log(error));
     }
   }, [navigate]);
 
   const onSubmit = (data: User) => {
-    if (data.email !== email || data.password !== password) {
+    if (
+      data.email !== adminData.email ||
+      data.password !== adminData.password
+    ) {
       setError(true);
     } else {
       setError(false);
@@ -72,40 +74,44 @@ export const Login = () => {
   return (
     <Container>
       <LoginSection onSubmit={handleSubmit(onSubmit)}>
-        <TitleSection>
-          <h1>
-            <img src={Logo} alt="logo" />
-            <span>Internship Manager</span>
-          </h1>
-        </TitleSection>
-        <SignInSection>
-          <h1>Sign In</h1>
-          <p>Your account</p>
-        </SignInSection>
-        <InputLogin>
-          <FiAtSign />
-          <input
-            placeholder="E-mail"
-            type="text"
-            {...register("email")}
-            autoComplete="off"
-          />
-        </InputLogin>
-        <ErrorMessage>{errors.email?.message}</ErrorMessage>
-        <InputPass>
-          <AiFillLock className="lock" />
-          <input
-            placeholder="Password"
-            type={visible ? "password" : "text"}
-            {...register("password")}
-          />
-          <span className="eye" onClick={toggleVisible}>
-            {visible ? <AiFillEye /> : <AiFillEyeInvisible />}
-          </span>
-        </InputPass>
-        <ErrorMessage>{errors.password?.message}</ErrorMessage>
-        <ButtonSubmit type="submit">Sign in</ButtonSubmit>
-        <ErrorMessage>{error && "Login or password do not match"}</ErrorMessage>
+        <Fade left>
+          <TitleSection>
+            <h1>
+              <img src={Logo} alt="logo" />
+              <span>Internship Manager</span>
+            </h1>
+          </TitleSection>
+          <SignInSection>
+            <h1>Sign In</h1>
+            <p>Your account</p>
+          </SignInSection>
+          <InputLogin>
+            <FiAtSign />
+            <input
+              placeholder="E-mail"
+              type="text"
+              {...register("email")}
+              autoComplete="off"
+            />
+          </InputLogin>
+          <ErrorMessage>{errors.email?.message}</ErrorMessage>
+          <InputPass>
+            <AiFillLock className="lock" />
+            <input
+              placeholder="Password"
+              type={visible ? "password" : "text"}
+              {...register("password")}
+            />
+            <span className="eye" onClick={toggleVisible}>
+              {visible ? <AiFillEye /> : <AiFillEyeInvisible />}
+            </span>
+          </InputPass>
+          <ErrorMessage>{errors.password?.message}</ErrorMessage>
+          <ButtonSubmit type="submit">Sign in</ButtonSubmit>
+          <ErrorMessage>
+            {error && "Login or password do not match"}
+          </ErrorMessage>
+        </Fade>
       </LoginSection>
       <BannerSection>
         <img src={Banner} alt="Banner" />

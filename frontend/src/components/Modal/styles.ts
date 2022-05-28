@@ -82,7 +82,6 @@ export const ButtonSubmit = styled.button`
   color: white;
 `;
 
-
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
