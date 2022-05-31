@@ -44,6 +44,12 @@
   <img alt="tela de edição de perfil" src="https://user-images.githubusercontent.com/45500812/170839342-9b2422f0-2822-4714-80b5-35639742107c.png" width="100%">
 </p>
 
+## 📷 Tela de erro 404
+
+<p align="center">
+  <img alt="tela de erro 404" src="https://user-images.githubusercontent.com/45500812/171083310-ad211304-0966-4a23-a8da-61984a4b2d86.png" width="100%">
+</p>
+
 ## ✨ Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
