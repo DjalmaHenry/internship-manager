@@ -1,13 +1,13 @@
 const express = require("express");
 
-const { resolve } = require("path");
+const path = require("path");
 
 const app = express();
 
-app.use(express.static(resolve.join(__dirname, "../build/static")));
+app.use(express.static(path.join(__dirname, "../build/static")));
 
 app.get("*", (req, res) => {
-  res.sendFile(resolve.join(__dirname, "./public/index.html"));
+  res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 app.listen(process.env.PORT || 3000, (err) => {
