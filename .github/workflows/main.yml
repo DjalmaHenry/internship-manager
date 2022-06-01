@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
-      url: 'http://internshipsmanager.herokuapp.com/'
     needs: build
     steps:
       - name: Run a one-line script
