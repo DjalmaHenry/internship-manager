@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+      url: 'http://internshipsmanager.herokuapp.com/'
+    needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy Dev
+        
+  deploy-hmg:
+    runs-on: ubuntu-latest
+    environment:
+      name: hmg
+      url: 'http://internshipsmanager.herokuapp.com/'
+    needs: deploy-dev
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy HMG
+        
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+      url: 'http://internshipsmanager.herokuapp.com/'
+    needs: deploy-hmg
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy Prod
