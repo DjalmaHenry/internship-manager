@@ -34,10 +34,5 @@ jobs:
       url: 'http://internshipsmanager.herokuapp.com/'
     needs: deploy-dev
     steps:
-      - name: Deploy application on Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_app_key: "${{secrets.HEROKU_API_KEY}}"
-          heroku_app_name: "internshipsmanager"
-          heroku_email: "djalmahenry@outlook.com"
-          appdir: "frontend"
+      - name: Run a one-line script
+        run: echo Deploy Dev
