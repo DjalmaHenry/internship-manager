@@ -20,22 +20,17 @@ jobs:
       - name: Run a one-line script
         run: echo Deploy Dev
         
-  deploy-hmg:
-    runs-on: ubuntu-latest
-    environment:
-      name: hmg
-      url: 'http://internshipsmanager.herokuapp.com/'
-    needs: deploy-dev
-    steps:
-      - name: Run a one-line script
-        run: echo Deploy HMG
-        
   deploy-prod:
     runs-on: ubuntu-latest
     environment:
       name: prod
       url: 'http://internshipsmanager.herokuapp.com/'
-    needs: deploy-hmg
+    needs: deploy-dev
     steps:
-      - name: Run a one-line script
-        run: echo Deploy Prod
+      - name: Deploy application on Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_app_key: "${{secrets.HEROKU_API_KEY}}"
+          heroku_app_name: "internshipsmanager"
+          heroku_email: "djalmahenry@outlook.com"
+          appdir: "frontend"
