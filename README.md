@@ -78,6 +78,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O Internship Manager é um dashboard de gerenciamento de todos estagiários de uma universidade, destinado à coordenadores de estágio.
 
+## 🔖 Layout
+
+Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/community/file/1115067415782457092).
+
 ## 🚀 Protótipo
 
 Você pode testar e usar o Internship Manager através [desse link](http://internshipsmanager.herokuapp.com).
