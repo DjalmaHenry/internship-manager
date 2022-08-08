@@ -31,6 +31,7 @@ export const DetailArea = () => {
           <ReactLoading type="spin" color="#1a7ae0" height={100} width={100} />
         </div>
       ) : (
+        <div>
           <InternCard
             firstName={intern.first_name}
             lastName={intern.last_name}
@@ -73,6 +74,7 @@ export const DetailArea = () => {
               <h1>{intern.internship_avaliation}</h1>
             </div>
           </InfosContainer>
+        </div>
       )}
     </Container>
   );
