@@ -1,7 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { IoMdClose } from "react-icons/io";
-import { Fade } from "react-reveal";
 import { validateRegisterIntern } from "../../assets/schemas";
 import { RegisterInternProps } from "../../assets/types";
 import { ErrorMessage } from "../../pages/Login/styles";
@@ -45,7 +44,6 @@ const RegisterIntern = ({ setOpenModal }: ModalProps) => {
   return (
     <BackgroundModal>
       <ContainerModal onSubmit={handleSubmit(SubmitNewIntern)}>
-        <Fade top>
           <HeaderModal>
             <h1>CREATE INTERN</h1>
             <button
@@ -125,7 +123,6 @@ const RegisterIntern = ({ setOpenModal }: ModalProps) => {
             </TextareaBox>
           </TextareaContainer>
           <ButtonSubmit>Register intern</ButtonSubmit>
-        </Fade>
       </ContainerModal>
     </BackgroundModal>
   );

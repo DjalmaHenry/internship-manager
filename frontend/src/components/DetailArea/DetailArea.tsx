@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Zoom } from "react-reveal";
 import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { InternCard } from "../InternCard/InternCard";
@@ -32,7 +31,6 @@ export const DetailArea = () => {
           <ReactLoading type="spin" color="#1a7ae0" height={100} width={100} />
         </div>
       ) : (
-        <Zoom>
           <InternCard
             firstName={intern.first_name}
             lastName={intern.last_name}
@@ -75,7 +73,6 @@ export const DetailArea = () => {
               <h1>{intern.internship_avaliation}</h1>
             </div>
           </InfosContainer>
-        </Zoom>
       )}
     </Container>
   );

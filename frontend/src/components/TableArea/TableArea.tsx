@@ -2,8 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { MdModeEditOutline } from "react-icons/md";
 import { BsFillTrashFill } from "react-icons/bs";
 import { TiDocumentText } from "react-icons/ti";
-import { Zoom } from "react-reveal";
-
 import Modal from "../Modal/RegisterIntern";
 import { api } from "../../services/api";
 import { InternProps } from "../../assets/types";
@@ -51,7 +49,6 @@ export const TableArea = () => {
     <>
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
       <Container>
-        <Zoom>
           <Content>
             <HeaderTable>
               <p>Monitor interns, their contracts and reports.</p>
@@ -128,7 +125,6 @@ export const TableArea = () => {
               </tbody>
             </Table>
           </Content>
-        </Zoom>
       </Container>
     </>
   );

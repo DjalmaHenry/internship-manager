@@ -6,7 +6,6 @@ import {
   InputsContainer,
   Title,
 } from "./styles";
-import { Fade } from "react-reveal";
 import AdminLogo from "../../assets/img/AdminLogo.png";
 import { ErrorMessage } from "../../pages/Login/styles";
 import { useForm } from "react-hook-form";
@@ -45,11 +44,8 @@ export const AdminArea = () => {
 
   return (
     <Container>
-      <Fade top>
         <Title>EDIT ADMIN INFORMATION</Title>
-      </Fade>
       <AdminInfosContainer>
-        <Fade bottom>
           <img src={AdminLogo} alt="Admin" />
           <FormAdmin onSubmit={handleSubmit(SubmitNewAdminInfos)}>
             <InputsContainer>
@@ -98,7 +94,6 @@ export const AdminArea = () => {
             </InputsContainer>
             <button>Save</button>
           </FormAdmin>
-        </Fade>
       </AdminInfosContainer>
     </Container>
   );

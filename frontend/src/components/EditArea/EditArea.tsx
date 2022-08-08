@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { validateEditIntern } from "../../assets/schemas";
 import { EditInternProps } from "../../assets/types";
 import { ErrorMessage } from "../../pages/Login/styles";
-import { Fade } from "react-reveal";
 import { api } from "../../services/api";
 import {
   ButtonSubmit,
@@ -51,7 +50,6 @@ export const EditArea = () => {
 
   return (
     <ContainerModal onSubmit={handleSubmit(SubmitEditIntern)}>
-      <Fade top>
         <HeaderModal>
           <h1>EDIT INTERN</h1>
         </HeaderModal>
@@ -162,7 +160,6 @@ export const EditArea = () => {
           </TextareaBox>
         </TextareaContainer>
         <ButtonSubmit>Edit intern</ButtonSubmit>
-      </Fade>
     </ContainerModal>
   );
 };

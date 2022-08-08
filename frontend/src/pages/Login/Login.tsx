@@ -6,7 +6,6 @@ import { AiFillLock, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Fade } from "react-reveal";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
@@ -74,7 +73,6 @@ export const Login = () => {
   return (
     <Container>
       <LoginSection onSubmit={handleSubmit(onSubmit)}>
-        <Fade left>
           <TitleSection>
             <h1>
               <img src={Logo} alt="logo" />
@@ -111,7 +109,6 @@ export const Login = () => {
           <ErrorMessage>
             {error && "Login or password do not match"}
           </ErrorMessage>
-        </Fade>
       </LoginSection>
       <BannerSection>
         <img src={Banner} alt="Banner" />

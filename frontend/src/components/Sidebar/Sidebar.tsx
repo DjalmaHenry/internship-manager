@@ -5,7 +5,6 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 
 import Logo from "../../assets/img/Logo.svg";
-import { Fade } from "react-reveal";
 import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
@@ -18,7 +17,6 @@ export const Sidebar = () => {
 
   return (
     <Container>
-      <Fade left>
         <LogoArea>
           <img src={Logo} alt="logo" />
           <h1>Internship Manager</h1>
@@ -37,7 +35,6 @@ export const Sidebar = () => {
             Logout
           </Button>
         </ButtonsArea>
-      </Fade>
     </Container>
   );
 };
