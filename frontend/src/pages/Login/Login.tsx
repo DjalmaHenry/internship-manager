@@ -30,7 +30,7 @@ export const Login = () => {
   const [visible, setVisible] = useState(true);
   const navigate = useNavigate();
 
-  const [adminData, setAdminData] = useState<any>([{email: "leuson.mario@unicap.br", password: "123"}]);
+  const [adminData, setAdminData] = useState<any>([]);
   const [error, setError] = useState(false);
 
   const {
