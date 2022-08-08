@@ -3,9 +3,7 @@ import styled from "styled-components";
 export const ContainerModal = styled.form`
   width: 70%;
   height: 70%;
-  border-radius: 12px;
   display: flex;
-  border: 1px solid rgba(0, 0, 0, 0.35);
   flex-direction: column;
   padding: 50px;
   overflow-y: auto;

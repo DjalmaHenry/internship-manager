@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { InternCard } from "../InternCard/InternCard";
 import { StatusPending, StatusVerified } from "../TableArea/styles";
-import { Container, InfosContainer, Title } from "./styles";
+import { Container, InfosContainer, Title, AllInfosContainer } from "./styles";
 import ReactLoading from "react-loading";
 
 export const DetailArea = () => {
@@ -31,7 +31,7 @@ export const DetailArea = () => {
           <ReactLoading type="spin" color="#1a7ae0" height={100} width={100} />
         </div>
       ) : (
-        <div>
+        <AllInfosContainer>
           <InternCard
             firstName={intern.first_name}
             lastName={intern.last_name}
@@ -74,7 +74,7 @@ export const DetailArea = () => {
               <h1>{intern.internship_avaliation}</h1>
             </div>
           </InfosContainer>
-        </div>
+        </AllInfosContainer>
       )}
     </Container>
   );

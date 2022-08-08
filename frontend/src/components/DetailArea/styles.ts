@@ -8,6 +8,12 @@ export const Container = styled.div`
   justify-content: space-evenly;
 `;
 
+export const AllInfosContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+`
+
 export const InfosContainer = styled.div`
   width: 20vw;
   height: 60vh;
